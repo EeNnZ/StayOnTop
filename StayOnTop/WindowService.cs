@@ -31,6 +31,10 @@ namespace StayOnTop
 
         [DllImport("user32.dll", SetLastError = true)]
         private static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, uint uFlags);
+
+        [DllImport("user32.dll")]
+        private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+
         [DllImport("user32.dll")]
         private static extern bool GetWindowRect(IntPtr hWnd, out RECT lpRect);
 
@@ -80,6 +84,8 @@ namespace StayOnTop
         public static bool SetForeground(IntPtr hWnd) => SetForegroundWindow(hWnd);
         public static bool SetTopmost(IntPtr hWnd) => SetWindowPosition(hWnd, SpecialWindowHandles.HWND_TOPMOST);
         public static bool Reset(IntPtr hWnd) => SetWindowPosition(hWnd, SpecialWindowHandles.HWND_NOTOPMOST);
+        public static bool ShowWindowInternal(IntPtr hWnd) => ShowWindow(hWnd, (int)ShowWindowFlags.SW_RESTORE);
+
         private static bool SetWindowPosition(IntPtr hWnd, SpecialWindowHandles handleFlag)
         {
             try

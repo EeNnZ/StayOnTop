@@ -65,6 +65,7 @@
                 }
                 _ = WindowService.SetTopmost(hWnd);
                 _ = WindowService.SetForeground(hWnd);
+                _ = WindowService.ShowWindowInternal(hWnd);
                 _pinned.Add(hWnd, handleInfoPair.Value);
                 _windows[hWnd].WindowHandle = SpecialWindowHandles.HWND_TOPMOST;
             }

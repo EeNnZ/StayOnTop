@@ -8,7 +8,7 @@
         public SpecialWindowHandles WindowHandle;
         public override string ToString()
         {
-            return File.Name + "\t>\t" + Title;
+            return File?.Name + "\t>\t" + Title;
         }
     }
 }
